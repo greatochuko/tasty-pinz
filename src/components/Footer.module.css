@@ -1,0 +1,36 @@
+.footer {
+  background-color: hsl(220, 80%, 2%);
+  padding: 1rem 5rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+.footer p {
+  color: gray;
+}
+
+.logo {
+  height: 30px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 10px;
+}
+
+.socialLinks a {
+  padding: 8px 10px;
+  border: solid 1px #333;
+  color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.socialLinks a:hover {
+  background-color: #fff;
+  color: hsl(220, 80%, 2%);
+}
