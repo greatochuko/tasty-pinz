@@ -26,8 +26,13 @@
   padding: 10px;
   color: #999;
   font-weight: bold;
-  border-bottom: solid 2px transparent;
+  border: solid 2px transparent;
   transition: 0.2s;
+  outline: none;
+}
+
+.header nav ul li a:focus {
+  border: solid 2px var(--GREEN-100);
 }
 
 .header nav ul :is(li.active, li:hover) a {
@@ -47,6 +52,10 @@
   background-color: #3f7c3f;
   color: #fff;
   font-weight: 600;
+}
+
+.user a:focus {
+  outline: solid 2px #fff;
 }
 
 /* HERO */

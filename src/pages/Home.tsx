@@ -2,6 +2,7 @@ import Categories from "../components/Categories";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import SearchForm from "../components/SearchForm";
+import SpecialDishes from "../components/SpecialDishes";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <SearchForm />
       <Products />
       <Categories />
+      <SpecialDishes />
     </main>
   );
 }
