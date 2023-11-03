@@ -8,3 +8,11 @@
   list-style: none;
   text-decoration: none;
 }
+
+:root {
+  --GREEN-100: #3f7c3f;
+}
+
+button {
+  cursor: pointer;
+}
