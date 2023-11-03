@@ -1,5 +1,5 @@
 .header {
-  height: min(1000px, 100vh);
+  height: 100vh;
   padding: 1rem 12vw;
   background-color: #3f7c3f20;
   display: flex;
@@ -71,7 +71,6 @@
   flex-direction: column;
   width: 50%;
   color: #111;
-  /* flex: 1; */
 }
 
 .heading h1 {
@@ -86,12 +85,13 @@
 }
 
 .heading > p {
-  font-size: 1.8vw;
-  letter-spacing: 10px;
+  font-size: 3vw;
+  letter-spacing: 3px;
 }
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -133,5 +133,25 @@
 }
 
 .hero > img {
-  width: 400px;
+  width: 45%;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero > img {
+    display: none;
+  }
+
+  .heading {
+    width: 100%;
+  }
+
+  .header nav ul {
+    display: none;
+  }
 }

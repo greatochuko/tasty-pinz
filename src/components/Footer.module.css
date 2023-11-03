@@ -14,7 +14,7 @@
 }
 
 .logo {
-  height: 30px;
+  height: 5vh;
 }
 
 .socialLinks {
@@ -33,4 +33,19 @@
 .socialLinks a:hover {
   background-color: #fff;
   color: hsl(220, 80%, 2%);
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo {
+    order: -1;
+  }
+
+  .footer p {
+    order: 1;
+  }
 }

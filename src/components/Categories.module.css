@@ -8,10 +8,11 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .category {
-  aspect-ratio: 9/10;
+  aspect-ratio: 1;
   flex: 1;
   position: relative;
   overflow: hidden;
@@ -42,4 +43,23 @@
   text-align: center;
   padding: 1rem;
   z-index: 10;
+}
+
+@media screen and (max-width: 992px) {
+  .category {
+    min-width: 40%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .categories {
+    width: 90%;
+  }
+
+  .categoryList {
+    gap: 5px;
+  }
+
+  .category h3 {
+    font-size: 5vw;
+  }
 }

@@ -85,3 +85,22 @@
   justify-content: space-between;
   font-size: 1rem;
 }
+
+@media screen and (max-width: 600px) {
+  .specialDishes {
+    height: 300px;
+  }
+
+  .specialDish img {
+    height: 70%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .overlay {
+    padding: 1rem;
+  }
+
+  .heading h3 {
+    font-size: 7vw;
+  }
+}
