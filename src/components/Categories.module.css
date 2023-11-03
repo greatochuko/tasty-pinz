@@ -1,0 +1,45 @@
+.categories {
+  width: 80%;
+  max-width: 1400px;
+  margin: 3rem auto;
+}
+
+.categoryList {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.category {
+  aspect-ratio: 9/10;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.category img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.category:hover img {
+  scale: 1.05;
+}
+
+.category h3 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+  z-index: 10;
+}

@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+a {
+  color: inherit;
+}
+
 :root {
   --GREEN-100: #3f7c3f;
 }

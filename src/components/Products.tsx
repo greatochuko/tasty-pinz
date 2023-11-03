@@ -1,5 +1,6 @@
 import styles from "./Products.module.css";
 import Product from "./Product";
+import SectionHeading from "./SectionHeading";
 
 const products = [
   {
@@ -42,9 +43,12 @@ const products = [
 export default function Products() {
   return (
     <section className={styles.products}>
-      {products.map((product, i) => (
-        <Product key={i} product={product} />
-      ))}
+      <SectionHeading title="Popular Meals" linkText="See All Meals" />
+      <div className={styles.productList}>
+        {products.map((product, i) => (
+          <Product key={i} product={product} />
+        ))}
+      </div>
     </section>
   );
 }

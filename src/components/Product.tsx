@@ -18,13 +18,13 @@ export default function Product({ product }: ProductProps) {
     <div className={styles.product}>
       <img src={product.imgUrl} alt={product.name} />
       <div className={styles.details}>
-        <h2>
+        <h3>
           {product.name}
           <span>
             <i className="fa-solid fa-star"></i>
             {product.rating}
           </span>
-        </h2>
+        </h3>
         <Link to={`/store/${product.store.toLowerCase()}`}>
           {product.store}
         </Link>

@@ -1,3 +1,4 @@
+import Categories from "../components/Categories";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import SearchForm from "../components/SearchForm";
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <SearchForm />
       <Products />
+      <Categories />
     </main>
   );
 }

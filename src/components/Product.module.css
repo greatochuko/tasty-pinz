@@ -20,21 +20,22 @@
   gap: 5px;
 }
 
-.details h2 {
+.details h3 {
   font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.details h2 span {
+.details h3 span {
   display: flex;
   align-items: center;
   gap: 3px;
 }
 
-.details h2 span i {
+.details h3 span i {
   font-size: 0.7rem;
+  color: #ef233c;
 }
 
 .details a {

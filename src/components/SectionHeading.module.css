@@ -1,0 +1,21 @@
+.heading {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+}
+
+.heading h2 {
+  font-size: 1.2rem;
+}
+
+.heading a {
+  font-weight: 600;
+  padding: 5px;
+}
+
+.heading a:hover {
+  color: var(--GREEN-100);
+  text-decoration: underline;
+}
