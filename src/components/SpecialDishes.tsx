@@ -1,5 +1,5 @@
+import useCarousel from "../hooks/useCarousel";
 import styles from "./SpecialDishes.module.css";
-import { useState, useRef } from "react";
 
 const specialDishes = [
   { name: "Lobster Thermidor", imageUrl: "lobster-thermidor.jpg", price: 40 },
@@ -15,20 +15,8 @@ const specialDishes = [
 ];
 
 export default function SpecialDishes() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const specialDishRef = useRef<HTMLDivElement | null>(null);
-  const specialDishWidth: number | undefined = specialDishRef.current
-    ?.clientWidth as number;
-
-  function scrollLeft() {
-    if (scrollPosition === specialDishes.length - 1) return;
-    setScrollPosition((curr) => curr + 1);
-  }
-
-  function scrollRight() {
-    if (scrollPosition === 0) return;
-    setScrollPosition((curr) => curr - 1);
-  }
+  const { carouselRef, scrollLeft, scrollPosition, scrollRight, childRef } =
+    useCarousel(specialDishes);
 
   return (
     <section className={styles.specialDishes}>
@@ -40,27 +28,36 @@ export default function SpecialDishes() {
             <button onClick={scrollLeft}>&gt;</button>
           </div>
         </div>
-        <div className={styles.carousel}>
+        <div className={styles.carousel} ref={carouselRef}>
           <div
             className={styles.specialDishList}
             style={{
-              transform: `translateX(-${
-                scrollPosition * (specialDishWidth + 20)
-              }px)`,
+              transform: `translateX(${scrollPosition * 252}px)`,
             }}
           >
-            {specialDishes.map((dish) => (
-              <div
-                key={dish.name}
-                className={styles.specialDish}
-                ref={specialDishRef}
-              >
-                <img src={dish.imageUrl} alt={dish.name} />
-                <h4>
-                  {dish.name} <span>${dish.price}</span>
-                </h4>
-              </div>
-            ))}
+            <a
+              key={specialDishes[0].name}
+              className={styles.specialDish}
+              ref={childRef}
+            >
+              <img
+                src={specialDishes[0].imageUrl}
+                alt={specialDishes[0].name}
+              />
+              <h4>
+                {specialDishes[0].name} <span>${specialDishes[0].price}</span>
+              </h4>
+            </a>
+            {specialDishes.map((dish) =>
+              dish !== specialDishes[0] ? (
+                <div key={dish.name} className={styles.specialDish}>
+                  <img src={dish.imageUrl} alt={dish.name} />
+                  <h4>
+                    {dish.name} <span>${dish.price}</span>
+                  </h4>
+                </div>
+              ) : null
+            )}
           </div>
         </div>
       </div>

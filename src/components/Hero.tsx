@@ -14,7 +14,7 @@ export default function Hero() {
             <Link to={"/menu"}>Menu</Link>
           </li>
           <li>
-            <Link to={"/stores"}>Stores</Link>
+            <Link to={"/vendors"}>Vendors</Link>
           </li>
           <li>
             <Link to={"/categories"}>Categories</Link>

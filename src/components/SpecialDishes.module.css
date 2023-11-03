@@ -63,7 +63,7 @@
 .specialDishList {
   display: flex;
   height: 100%;
-  gap: 2vw;
+  gap: 2rem;
   transition: 0.2s;
 }
 

@@ -6,7 +6,7 @@ type Product = {
   price: number;
   imgUrl: string;
   rating: number;
-  store: string;
+  vendor: string;
 };
 
 type ProductProps = {
@@ -25,8 +25,8 @@ export default function Product({ product }: ProductProps) {
             {product.rating}
           </span>
         </h3>
-        <Link to={`/store/${product.store.toLowerCase()}`}>
-          {product.store}
+        <Link to={`/vendors/${product.vendor.toLowerCase()}`}>
+          {product.vendor}
         </Link>
         <h3>${product.price}</h3>
         <button>+</button>
