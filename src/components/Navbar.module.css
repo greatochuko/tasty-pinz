@@ -1,0 +1,117 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 1rem;
+}
+
+.logo {
+  height: 30px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar ul li a {
+  padding: 10px;
+  color: #999;
+  font-weight: bold;
+  border: solid 2px transparent;
+  transition: 0.2s;
+  outline: none;
+}
+
+.navbar ul li a:focus {
+  border: solid 2px var(--GREEN-100);
+}
+
+.navbar ul :is(li.active, li:hover) a {
+  color: #3f7c3f;
+  border-bottom: solid 2px #3f7c3f;
+}
+
+.user {
+  display: flex;
+  gap: 10px;
+}
+
+.user a {
+  border: solid 2px #3f7c3f;
+  border-radius: 9999px;
+  padding: 5px 1rem;
+  background-color: #3f7c3f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.user a:focus {
+  outline: solid 2px #fff;
+}
+
+.toggleNavBtn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar .mobileOverlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000030;
+    display: block;
+    transition: 0.3s;
+    opacity: 0;
+    backdrop-filter: blur(3px);
+    z-index: -1;
+  }
+
+  .navbar .mobileOverlay.open {
+    z-index: 100;
+    opacity: 1;
+  }
+
+  .navbar ul {
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 60%;
+    padding-top: 2rem;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 200;
+  }
+
+  .navbar ul.open {
+    transform: translateX(0%);
+  }
+
+  .navbar ul li a {
+    width: 100%;
+    display: block;
+    border: none;
+    padding: 1rem;
+  }
+
+  .navbar ul :is(li.active, li:hover) a {
+    color: var(--GREEN-100);
+    border: none;
+  }
+
+  .toggleNavBtn {
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: var(--GREEN-100);
+    border: solid 1px var(--GREEN-100);
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+  }
+}
