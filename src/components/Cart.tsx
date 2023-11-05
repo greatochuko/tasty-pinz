@@ -1,4 +1,6 @@
+import { useCartContext } from "../hooks/useCartContext";
 import styles from "./Cart.module.css";
+import CartItem from "./CartItem";
 
 type CartProps = {
   isOpen: boolean;
@@ -6,10 +8,16 @@ type CartProps = {
 };
 
 export default function Cart({ isOpen, setIsOpen }: CartProps) {
+  const { state: cart } = useCartContext();
   return (
     <>
       <div className={[styles.cart, isOpen ? styles.open : ""].join(" ")}>
-        Cart
+        <h2 className={styles.heading}>My Cart</h2>
+        <div className={styles.cartItems}>
+          {cart.map((cartItem) => (
+            <CartItem key={cartItem.product.name} cartItem={cartItem} />
+          ))}
+        </div>
       </div>
       <div
         className={[styles.overlay, isOpen ? styles.open : ""].join(" ")}

@@ -14,7 +14,7 @@
   align-items: center;
   padding-left: 1rem;
   box-shadow: 0 0 5px var(--GREEN-100);
-  z-index: 200;
+  z-index: 90;
 }
 
 .cartBtn:hover {

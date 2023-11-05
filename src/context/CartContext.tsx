@@ -1,11 +1,11 @@
 import { createContext, useReducer } from "react";
 import { Product } from "../components/Product";
 
-type CartItem = { product: Product; quantity: number };
+export type CartItemType = { product: Product; quantity: number };
 
 export type CartProviderValue = {
-  state: CartItem[];
-  addProductToCart: (product: CartItem) => void;
+  state: CartItemType[];
+  addProductToCart: (product: CartItemType) => void;
   removeProductFromCart: (product: Product) => void;
   increaseProductQuantity: (product: Product) => void;
   decreaseProductQuantity: (product: Product) => void;
@@ -18,20 +18,23 @@ type CartProviderType = {
   children: React.ReactNode;
 };
 
-const initialState: CartItem[] = [];
+const initialState: CartItemType[] = [];
 
 type ReducerAction = {
   type: "ADD" | "REMOVE" | "CLEAR" | "DECREASE_QUANTITY" | "INCREASE_QUANTITY";
-  payload?: CartItem | Product;
+  payload?: CartItemType | Product;
 };
 
-function cartReducer(state: CartItem[], action: ReducerAction): CartItem[] {
+function cartReducer(
+  state: CartItemType[],
+  action: ReducerAction
+): CartItemType[] {
   switch (action.type) {
     case "ADD":
-      return [...state, action.payload as CartItem];
+      return [...state, action.payload as CartItemType];
 
     case "REMOVE":
-      return state.filter((product) => product !== action.payload);
+      return state.filter((cartItem) => cartItem.product !== action.payload);
 
     case "INCREASE_QUANTITY":
       return state.map((cartItem) => ({
@@ -47,7 +50,6 @@ function cartReducer(state: CartItem[], action: ReducerAction): CartItem[] {
         (cartItem) => cartItem.product === action.payload
       );
 
-      console.log(productToUpdate?.quantity);
       if ((productToUpdate?.quantity as number) <= 1) {
         return state.filter((cartItem) => cartItem.product !== action.payload);
       }
@@ -72,7 +74,7 @@ function cartReducer(state: CartItem[], action: ReducerAction): CartItem[] {
 export default function CartProvider({ children }: CartProviderType) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  function addProductToCart(product: CartItem) {
+  function addProductToCart(product: CartItemType) {
     dispatch({ type: "ADD", payload: product });
   }
 
