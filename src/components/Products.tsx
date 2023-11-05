@@ -1,9 +1,22 @@
 import styles from "./Products.module.css";
 import Product from "./Product";
 import SectionHeading from "./SectionHeading";
-import { useCartContext } from "../hooks/useCartContext";
 
 const products = [
+  {
+    name: "Chicken Burger",
+    vendor: "Dallas",
+    price: 12.99,
+    imgUrl: "/chicken-burger.jpg",
+    rating: 5.0,
+  },
+  {
+    name: "Chicken Burger",
+    vendor: "Dallas",
+    price: 12.99,
+    imgUrl: "/chicken-burger.jpg",
+    rating: 5.0,
+  },
   {
     name: "Chicken Burger",
     vendor: "Dallas",
@@ -42,9 +55,6 @@ const products = [
 ];
 
 export default function Products() {
-  const { cart } = useCartContext();
-
-  console.log(cart);
   return (
     <section className={styles.products}>
       <SectionHeading title="Popular Meals" linkText="See All Meals" />

@@ -13,8 +13,8 @@ export default function ProductModal({
   closeModal,
   product,
 }: ProductModalProps) {
-  const { addProductToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
+  const { addProductToCart } = useCartContext();
 
   function increaseQuantity() {
     setQuantity((curr) => curr + 1);

@@ -4,21 +4,20 @@
   margin: 3rem auto;
 }
 
+body ::-webkit-scrollbar {
+  display: none;
+}
+
 .productList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  grid-auto-columns: 215px;
   gap: 1rem;
 }
 
 @media screen and (max-width: 768px) {
   .products {
     width: 90%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .productList {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5px;
   }
 }

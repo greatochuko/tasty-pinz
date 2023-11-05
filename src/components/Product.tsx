@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Product.module.css";
 import ProductModal from "./ProductModal";
+import { useCartContext } from "../hooks/useCartContext";
 
 export type Product = {
   name: string;
@@ -17,6 +18,13 @@ type ProductProps = {
 
 export default function Product({ product }: ProductProps) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const {
+    state: cart,
+    increaseProductQuantity,
+    decreaseProductQuantity,
+  } = useCartContext();
+
+  const productInCart = cart.find((cartItem) => cartItem.product === product);
 
   function closeModal() {
     setModalIsOpen(false);
@@ -38,7 +46,19 @@ export default function Product({ product }: ProductProps) {
             {product.vendor}
           </Link>
           <h3>${product.price}</h3>
-          <button onClick={() => setModalIsOpen(true)}>+</button>
+          {productInCart ? (
+            <div className={styles.quantityControl}>
+              <button onClick={() => decreaseProductQuantity(product)}>
+                -
+              </button>
+              <p className={styles.quantity}>{productInCart.quantity}</p>
+              <button onClick={() => increaseProductQuantity(product)}>
+                +
+              </button>
+            </div>
+          ) : (
+            <button onClick={() => setModalIsOpen(true)}>+</button>
+          )}
         </div>
       </div>
       {modalIsOpen && (
