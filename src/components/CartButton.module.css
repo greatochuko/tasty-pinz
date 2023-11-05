@@ -1,0 +1,48 @@
+.cartBtn {
+  width: 70px;
+  height: 40px;
+  color: white;
+  background-color: var(--GREEN-100);
+  position: fixed;
+  bottom: 10%;
+  right: -15px;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  animation: pulse infinite 4s;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px var(--GREEN-100);
+}
+
+.cartBtn:hover {
+  transform: translateX(-15px);
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cartBtn span {
+  position: relative;
+  top: -10px;
+  right: 5px;
+  background-color: var(--RED-100);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}

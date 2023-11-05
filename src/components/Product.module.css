@@ -35,7 +35,7 @@
 
 .details h3 span i {
   font-size: 0.7rem;
-  color: #ef233c;
+  color: var(--RED-100);
 }
 
 .details a {

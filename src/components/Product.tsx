@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import styles from "./Product.module.css";
+import ProductModal from "./ProductModal";
 
-type Product = {
+export type Product = {
   name: string;
   price: number;
   imgUrl: string;
@@ -14,23 +16,34 @@ type ProductProps = {
 };
 
 export default function Product({ product }: ProductProps) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+
   return (
-    <div className={styles.product}>
-      <img src={product.imgUrl} alt={product.name} />
-      <div className={styles.details}>
-        <h3>
-          {product.name}
-          <span>
-            <i className="fa-solid fa-star"></i>
-            {product.rating}
-          </span>
-        </h3>
-        <Link to={`/vendors/${product.vendor.toLowerCase()}`}>
-          {product.vendor}
-        </Link>
-        <h3>${product.price}</h3>
-        <button>+</button>
+    <>
+      <div className={styles.product}>
+        <img src={product.imgUrl} alt={product.name} />
+        <div className={styles.details}>
+          <h3>
+            {product.name}
+            <span>
+              <i className="fa-solid fa-star"></i>
+              {product.rating}
+            </span>
+          </h3>
+          <Link to={`/vendors/${product.vendor.toLowerCase()}`}>
+            {product.vendor}
+          </Link>
+          <h3>${product.price}</h3>
+          <button onClick={() => setModalIsOpen(true)}>+</button>
+        </div>
       </div>
-    </div>
+      {modalIsOpen && (
+        <ProductModal product={product} closeModal={closeModal} />
+      )}
+    </>
   );
 }
