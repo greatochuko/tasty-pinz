@@ -1,15 +1,15 @@
 import { createContext, useReducer } from "react";
-import { Product } from "../components/Product";
+import { ProductType } from "../components/Product";
 
-export type CartItemType = { product: Product; quantity: number };
+export type CartItemType = { product: ProductType; quantity: number };
 
 export type CartProviderValue = {
   state: CartItemType[];
   addProductToCart: (product: CartItemType) => void;
-  removeProductFromCart: (product: Product) => void;
-  increaseProductQuantity: (product: Product) => void;
-  decreaseProductQuantity: (product: Product) => void;
-  clearCart: (product: Product) => void;
+  removeProductFromCart: (product: ProductType) => void;
+  increaseProductQuantity: (product: ProductType) => void;
+  decreaseProductQuantity: (product: ProductType) => void;
+  clearCart: (product: ProductType) => void;
 };
 
 export const CartContext = createContext<CartProviderValue | null>(null);
@@ -22,7 +22,7 @@ const initialState: CartItemType[] = [];
 
 type ReducerAction = {
   type: "ADD" | "REMOVE" | "CLEAR" | "DECREASE_QUANTITY" | "INCREASE_QUANTITY";
-  payload?: CartItemType | Product;
+  payload?: CartItemType | ProductType;
 };
 
 function cartReducer(
@@ -78,15 +78,15 @@ export default function CartProvider({ children }: CartProviderType) {
     dispatch({ type: "ADD", payload: product });
   }
 
-  function removeProductFromCart(product: Product) {
+  function removeProductFromCart(product: ProductType) {
     dispatch({ type: "REMOVE", payload: product });
   }
 
-  function increaseProductQuantity(product: Product) {
+  function increaseProductQuantity(product: ProductType) {
     dispatch({ type: "INCREASE_QUANTITY", payload: product });
   }
 
-  function decreaseProductQuantity(product: Product) {
+  function decreaseProductQuantity(product: ProductType) {
     dispatch({ type: "DECREASE_QUANTITY", payload: product });
   }
 

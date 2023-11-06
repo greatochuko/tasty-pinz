@@ -32,6 +32,7 @@
 
 .auth .heading a {
   font-size: 0.9rem;
+  outline: none;
   color: var(--GREEN-100);
 }
 

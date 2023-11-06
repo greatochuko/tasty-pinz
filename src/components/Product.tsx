@@ -4,7 +4,7 @@ import styles from "./Product.module.css";
 import ProductModal from "./ProductModal";
 import { useCartContext } from "../hooks/useCartContext";
 
-export type Product = {
+export type ProductType = {
   name: string;
   price: number;
   imgUrl: string;
@@ -13,7 +13,7 @@ export type Product = {
 };
 
 type ProductProps = {
-  product: Product;
+  product: ProductType;
 };
 
 export default function Product({ product }: ProductProps) {

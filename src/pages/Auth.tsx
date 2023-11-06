@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import styles from "./Auth.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { fetchLogin, fetchSignup } from "../services/authServices";
 
 export default function Auth({ type }: { type: "login" | "signup" }) {
-  const [fullname, setFullname] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -13,12 +14,25 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  function login() {
-    navigate("/");
+  async function login(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const data = await fetchLogin(email, password);
+    if (!data.error) navigate("/");
+    setError(data.error);
+    setLoading(false);
   }
 
-  function signup() {
-    navigate("/");
+  async function signup(e: FormEvent) {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+    const data = await fetchSignup(fullName, email, password);
+    if (!data.error) navigate("/");
+    setError(data.error);
+    setLoading(false);
   }
 
   return (
@@ -30,26 +44,24 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
           <h1>{type === "login" ? "Log In" : "Sign Up"}</h1>
           {type === "login" ? (
             <p>
-              Don't have an account?
-              <Link to={"/signup"}> Signup</Link>
+              Don't have an account? <Link to={"/signup"}>Signup</Link>
             </p>
           ) : (
             <p>
-              Already have an account?
-              <Link to={"/login"}> Login</Link>
+              Already have an account? <Link to={"/login"}>Login</Link>
             </p>
           )}
         </div>
         {type === "signup" ? (
           <div
-            className={`${styles.inputGroup} ${fullname ? styles.filled : ""}`}
+            className={`${styles.inputGroup} ${fullName ? styles.filled : ""}`}
           >
             <label htmlFor="fullname">Full Name</label>
             <input
               type="text"
               id="fullname"
-              value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
           </div>
         ) : null}
@@ -112,8 +124,10 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
             )}
           </div>
         ) : null}
-        {error ? <p className={styles.error}>{error}</p> : null}
-        <button type="submit">{type === "login" ? "Log In" : "Sign Up"}</button>
+        <p className={styles.error}>{error}</p>
+        <button disabled={loading} type="submit">
+          {type === "login" ? "Log In" : "Sign Up"}
+        </button>
       </form>
     </main>
   );
