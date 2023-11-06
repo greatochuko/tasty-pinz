@@ -49,9 +49,7 @@ export default function Navbar() {
               Logout
             </Link>
           ) : (
-            <Link to={""} onClick={() => setIsLoggedIn(true)}>
-              Login
-            </Link>
+            <Link to={"/login"}>Login</Link>
           )}
         </div>
       </nav>

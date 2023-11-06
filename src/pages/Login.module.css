@@ -1,0 +1,110 @@
+.login {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/login-bg.jpg");
+  background-color: rgb(32, 61, 80);
+  background-size: cover;
+  background-position: center;
+}
+
+.login form {
+  width: min(400px, 90%);
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.login .heading {
+  text-align: center;
+  color: #333;
+}
+
+.login .heading h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.login .heading a {
+  font-size: 0.9rem;
+  color: var(--GREEN-100);
+}
+
+.login .heading a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  height: 30px;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.inputGroup {
+  width: 100%;
+  position: relative;
+  height: fit-content;
+}
+
+.inputGroup label {
+  position: absolute;
+  top: 21px;
+  left: 0;
+  transform: translateY(-50%);
+  transition: 0.2s;
+  cursor: text;
+  color: #666;
+}
+
+.inputGroup:focus-within label,
+.inputGroup.filled label {
+  top: -5px;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: solid 1px gray;
+  outline: none;
+}
+
+.inputGroup input:focus {
+  border-bottom: solid 2px var(--GREEN-100);
+}
+
+.inputGroup button {
+  position: absolute;
+  padding: 10px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  color: #333;
+}
+
+.login form > button {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--GREEN-100);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
+.login form > button:active {
+  background-color: var(--GREEN-200);
+}
