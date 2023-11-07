@@ -8,7 +8,7 @@ type CartProps = {
 };
 
 export default function Cart({ isOpen, setIsOpen }: CartProps) {
-  const { state: cart } = useCartContext();
+  const { cart } = useCartContext();
   return (
     <>
       <div className={[styles.cart, isOpen ? styles.open : ""].join(" ")}>

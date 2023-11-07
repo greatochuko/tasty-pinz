@@ -15,10 +15,12 @@ export type UserType = {
 
 export type UserProviderValue = {
   user: UserType;
-  updateUser: (update: UserType) => void;
+  setUser: React.Dispatch<UserType | null>;
 };
 
-const initialUser = await fetchUser();
+const fetchedUser = await fetchUser();
+
+const initialUser = fetchedUser.error ? null : fetchedUser;
 
 export const UserContext = createContext<UserProviderValue | null>(null);
 
@@ -28,11 +30,9 @@ export default function UserProvider({
   children: React.ReactNode;
 }) {
   const [user, setUser] = useState(initialUser);
-  function updateUser(update: UserType) {
-    setUser(update);
-  }
+
   return (
-    <UserContext.Provider value={{ user, updateUser }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
   );

@@ -4,7 +4,7 @@ import Cart from "./Cart";
 import { useState } from "react";
 
 export default function CartButton() {
-  const { state: cart } = useCartContext();
+  const { cart } = useCartContext();
   const [isOpen, setIsOpen] = useState(false);
 
   return (

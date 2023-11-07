@@ -37,5 +37,7 @@ export async function fetchSignup(
     const err = e as Error;
     data = { error: err.message };
   }
+  localStorage.setItem("token", data.token);
+
   return data;
 }

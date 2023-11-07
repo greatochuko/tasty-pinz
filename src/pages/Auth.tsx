@@ -1,7 +1,11 @@
 import { FormEvent, useState } from "react";
 import styles from "./Auth.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { fetchLogin, fetchSignup } from "../services/authServices";
+import useUserContext from "../hooks/useUserContext";
+import { fetchUser } from "../services/userServices";
+import { useCartContext } from "../hooks/useCartContext";
+import { UserType } from "../context/UserContext";
 
 export default function Auth({ type }: { type: "login" | "signup" }) {
   const [fullName, setFullName] = useState("");
@@ -13,13 +17,31 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { user, setUser } = useUserContext();
+  const { setCart } = useCartContext();
+
+  const submitBtnText = loading
+    ? "Loading"
+    : type === "login"
+    ? "Log In"
+    : "Sign Up";
+
+  const canLogin = password && email;
+  const canSignup =
+    email && fullName && password && password !== confirmPassword;
 
   async function login(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError("");
     const data = await fetchLogin(email, password);
-    if (!data.error) navigate("/");
+
+    if (!data.error) {
+      const user: UserType = await fetchUser();
+      setUser(user);
+      setCart(user.cart);
+      navigate("/");
+    }
     setError(data.error);
     setLoading(false);
   }
@@ -30,10 +52,15 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
     setLoading(true);
     setError("");
     const data = await fetchSignup(fullName, email, password);
-    if (!data.error) navigate("/");
+    if (!data.error) {
+      setUser(await fetchUser());
+      navigate("/");
+    }
     setError(data.error);
     setLoading(false);
   }
+
+  if (user) return <Navigate to={"/"} />;
 
   return (
     <main className={styles.auth}>
@@ -125,8 +152,11 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
           </div>
         ) : null}
         <p className={styles.error}>{error}</p>
-        <button disabled={loading} type="submit">
-          {type === "login" ? "Log In" : "Sign Up"}
+        <button
+          disabled={loading || type === "login" ? !canLogin : !canSignup}
+          type="submit"
+        >
+          {submitBtnText}
         </button>
       </form>
     </main>

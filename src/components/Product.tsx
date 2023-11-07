@@ -24,13 +24,12 @@ type ProductProps = {
 
 export default function Product({ product }: ProductProps) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const {
-    state: cart,
-    increaseProductQuantity,
-    decreaseProductQuantity,
-  } = useCartContext();
+  const { cart, increaseProductQuantity, decreaseProductQuantity } =
+    useCartContext();
 
-  const productInCart = cart.find((cartItem) => cartItem.product === product);
+  const productInCart = cart.find(
+    (cartItem) => cartItem.product._id === product._id
+  );
 
   function closeModal() {
     setModalIsOpen(false);

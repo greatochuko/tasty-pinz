@@ -117,3 +117,7 @@
 .auth form > button:active {
   background-color: var(--GREEN-200);
 }
+
+.auth form > button:disabled {
+  background-color: gray;
+}

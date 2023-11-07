@@ -6,12 +6,13 @@ import { fetchAddMealToCart } from "../services/cartServices";
 export type CartItemType = { product: ProductType; quantity: number };
 
 export type CartProviderValue = {
-  state: CartItemType[];
+  cart: CartItemType[];
   addProductToCart: (product: CartItemType) => void;
   removeProductFromCart: (product: ProductType) => void;
   increaseProductQuantity: (product: ProductType) => void;
   decreaseProductQuantity: (product: ProductType) => void;
-  clearCart: (product: ProductType) => void;
+  setCart: (cart: CartItemType[]) => void;
+  clearCart: () => void;
 };
 
 export const CartContext = createContext<CartProviderValue | null>(null);
@@ -21,12 +22,20 @@ type CartProviderType = {
 };
 
 type ReducerAction = {
-  type: "ADD" | "REMOVE" | "CLEAR" | "DECREASE_QUANTITY" | "INCREASE_QUANTITY";
-  payload?: CartItemType | ProductType;
+  type:
+    | "ADD"
+    | "REMOVE"
+    | "CLEAR"
+    | "DECREASE_QUANTITY"
+    | "INCREASE_QUANTITY"
+    | "SET";
+  payload?: CartItemType | ProductType | CartItemType[];
 };
 
 const user = await fetchUser();
-const initialState: CartItemType[] = user.cart;
+const initialState: CartItemType[] = user.cart || [];
+
+console.log(user.cart);
 
 function cartReducer(
   state: CartItemType[],
@@ -66,8 +75,11 @@ function cartReducer(
       }));
     }
 
+    case "SET":
+      return action.payload as CartItemType[];
+
     case "CLEAR":
-      return initialState;
+      return [];
 
     default:
       return state;
@@ -98,15 +110,20 @@ export default function CartProvider({ children }: CartProviderType) {
     dispatch({ type: "CLEAR" });
   }
 
+  function setCart(cart: CartItemType[]) {
+    dispatch({ type: "SET", payload: cart });
+  }
+
   return (
     <CartContext.Provider
       value={{
-        state,
+        cart: state,
         addProductToCart,
         removeProductFromCart,
         clearCart,
         increaseProductQuantity,
         decreaseProductQuantity,
+        setCart,
       }}
     >
       {children}

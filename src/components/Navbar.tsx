@@ -2,12 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import LogoutModal from "./LogoutModal";
+import useUserContext from "../hooks/useUserContext";
 
 export default function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { pathname } = useLocation();
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
+  const { user } = useUserContext();
 
   return (
     <>
@@ -30,7 +31,7 @@ export default function Navbar() {
           <li>
             <Link to={"/categories"}>Categories</Link>
           </li>
-          {isLoggedIn ? (
+          {user ? (
             <li>
               <Link to={"/order"}>Orders</Link>
             </li>
@@ -44,7 +45,7 @@ export default function Navbar() {
           onClick={() => setNavIsOpen(false)}
         ></div>
         <div className={styles.user}>
-          {isLoggedIn ? (
+          {user ? (
             <Link to={""} onClick={() => setLogoutModal(true)}>
               Logout
             </Link>
