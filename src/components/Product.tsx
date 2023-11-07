@@ -4,12 +4,17 @@ import styles from "./Product.module.css";
 import ProductModal from "./ProductModal";
 import { useCartContext } from "../hooks/useCartContext";
 
+export type VendorType = {
+  name: string;
+  _id: string;
+};
+
 export type ProductType = {
   name: string;
   price: number;
-  imgUrl: string;
+  imageUrl: string;
   rating: number;
-  vendor: string;
+  vendor: VendorType;
 };
 
 type ProductProps = {
@@ -33,7 +38,7 @@ export default function Product({ product }: ProductProps) {
   return (
     <>
       <div className={styles.product}>
-        <img src={product.imgUrl} alt={product.name} />
+        <img src={product.imageUrl} alt={product.name} />
         <div className={styles.details}>
           <h3>
             {product.name}
@@ -42,8 +47,8 @@ export default function Product({ product }: ProductProps) {
               {product.rating}
             </span>
           </h3>
-          <Link to={`/vendors/${product.vendor.toLowerCase()}`}>
-            {product.vendor}
+          <Link to={`/vendors/${product.vendor._id}`}>
+            {product.vendor.name}
           </Link>
           <h3>${product.price}</h3>
           {productInCart ? (

@@ -4,6 +4,27 @@
   margin: 3rem auto;
 }
 
+.loadingIndicator {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.productsError {
+  width: 80%;
+  max-width: 1400px;
+  margin: 3rem auto;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.productsError button {
+  color: var(--RED-100);
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+}
+
 body ::-webkit-scrollbar {
   display: none;
 }

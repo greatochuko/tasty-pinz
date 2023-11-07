@@ -1,68 +1,51 @@
 import styles from "./Products.module.css";
-import Product from "./Product";
+import Product, { ProductType } from "./Product";
 import SectionHeading from "./SectionHeading";
+import { fetchProducts } from "../services/productServices";
+import { useState, useEffect } from "react";
 
-const products = [
-  {
-    name: "Chicken Burger",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 2",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 3",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 4",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 5",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 6",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-  {
-    name: "Chicken Burger 7",
-    vendor: "Dallas",
-    price: 12.99,
-    imgUrl: "/chicken-burger.jpg",
-    rating: 5.0,
-  },
-];
+type ErrorType = {
+  error: string;
+};
 
 export default function Products() {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<(ProductType[] & ErrorType) | null>(
+    null
+  );
+
+  useEffect(() => {
+    async function getProducts() {
+      const products = await fetchProducts();
+      setProducts(products);
+      setLoading(false);
+    }
+    getProducts();
+  }, []);
+
+  async function getProducts() {
+    setLoading(true);
+    const products = await fetchProducts();
+    setProducts(products);
+    setLoading(false);
+  }
+
   return (
     <section className={styles.products}>
       <SectionHeading title="Popular Meals" linkText="See All Meals" />
-      <div className={styles.productList}>
-        {products.map((product, i) => (
-          <Product key={i} product={product} />
-        ))}
-      </div>
+      {loading ? (
+        <div className={styles.loadingIndicator}>Loading...</div>
+      ) : products?.error ? (
+        <div className={styles.productsError}>
+          Unable to Get Products <button onClick={getProducts}>Retry</button>
+        </div>
+      ) : (
+        <div className={styles.productList}>
+          {products?.map((product, i) => (
+            <Product key={i} product={product} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

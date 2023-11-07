@@ -10,7 +10,7 @@ export type UserType = {
   cart: CartItemType[];
   orders: object[];
   wishList: ProductType[];
-  stores: object[];
+  vendors: object[];
 };
 
 export type UserProviderValue = {

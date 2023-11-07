@@ -1,5 +1,7 @@
 import { createContext, useReducer } from "react";
 import { ProductType } from "../components/Product";
+import { fetchUser } from "../services/userServices";
+import { fetchAddMealToCart } from "../services/cartServices";
 
 export type CartItemType = { product: ProductType; quantity: number };
 
@@ -18,12 +20,13 @@ type CartProviderType = {
   children: React.ReactNode;
 };
 
-const initialState: CartItemType[] = [];
-
 type ReducerAction = {
   type: "ADD" | "REMOVE" | "CLEAR" | "DECREASE_QUANTITY" | "INCREASE_QUANTITY";
   payload?: CartItemType | ProductType;
 };
+
+const user = await fetchUser();
+const initialState: CartItemType[] = user.cart;
 
 function cartReducer(
   state: CartItemType[],
@@ -74,7 +77,8 @@ function cartReducer(
 export default function CartProvider({ children }: CartProviderType) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  function addProductToCart(product: CartItemType) {
+  async function addProductToCart(product: CartItemType) {
+    await fetchAddMealToCart(product);
     dispatch({ type: "ADD", payload: product });
   }
 

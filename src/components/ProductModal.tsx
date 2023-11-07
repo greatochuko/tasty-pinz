@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Product } from "./Product";
+import { ProductType } from "./Product";
 import styles from "./ProductModal.module.css";
 import { useCartContext } from "../hooks/useCartContext";
 
 type ProductModalProps = {
   closeModal: () => void;
-  product: Product;
+  product: ProductType;
 };
 
 export default function ProductModal({
