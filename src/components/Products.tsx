@@ -32,7 +32,11 @@ export default function Products() {
 
   return (
     <section className={styles.products}>
-      <SectionHeading title="Popular Meals" linkText="See All Meals" />
+      <SectionHeading
+        title="Popular Meals"
+        linkText="See All Meals"
+        link="menu"
+      />
       {loading ? (
         <div className={styles.loadingIndicator}>Loading...</div>
       ) : products?.error ? (

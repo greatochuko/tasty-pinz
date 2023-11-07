@@ -2,10 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #3f7c3f20;
+  padding: 1rem 12vw;
 }
 
 .logo {
   height: 30px;
+  margin-top: 8px;
 }
 
 .navbar ul {
@@ -36,13 +39,19 @@
   gap: 10px;
 }
 
-.user a {
+.user a,
+.user button {
   border: solid 2px #3f7c3f;
   border-radius: 9999px;
   padding: 5px 1rem;
   background-color: #3f7c3f;
   color: #fff;
   font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.user button i {
+  margin-right: 10px;
 }
 
 .user a:focus {
@@ -112,5 +121,17 @@
     border: none;
     background-color: transparent;
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .navbar {
+    padding: 1rem 6vw;
   }
 }

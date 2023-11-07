@@ -4,7 +4,7 @@
   position: fixed;
   right: -100%;
   top: 0;
-  width: 40vw;
+  width: max(30vw, 500px);
   height: 100vh;
   transition: 0.3s;
   padding: 1rem;
