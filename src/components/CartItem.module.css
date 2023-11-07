@@ -1,12 +1,11 @@
 .cartItem {
   background-color: #fff;
-  /* border: solid 1px #eee; */
   box-shadow: 0 0 5px #eee;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   gap: 10px;
-  aspect-ratio: 3;
+  height: 120px;
   position: relative;
 }
 
@@ -21,7 +20,7 @@
 }
 
 .imageContainer {
-  flex: 1;
+  aspect-ratio: 1;
 }
 
 .imageContainer img {

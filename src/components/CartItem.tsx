@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartItemType } from "../context/CartContext";
 import { useCartContext } from "../hooks/useCartContext";
 import styles from "./CartItem.module.css";
@@ -22,10 +23,13 @@ export default function CartItem({ cartItem }: CartItemProps) {
         <i className="fa-solid fa-trash-can"></i>
       </button>
       <div className={styles.imageContainer}>
-        <img src={cartItem.product.imgUrl} alt="" />
+        <img src={cartItem.product.imageUrl} alt="" />
       </div>
       <div className={styles.details}>
         <h4>{cartItem.product.name}</h4>
+        <Link to={"/vendor/" + cartItem.product._id}>
+          {cartItem.product.vendor.name}
+        </Link>
         <div className={styles.quantityControl}>
           <button onClick={() => decreaseProductQuantity(cartItem.product)}>
             -

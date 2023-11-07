@@ -35,7 +35,7 @@ export default function ProductModal({
       <div className={styles.productModal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.productInfo}>
           <div className={styles.imageContainer}>
-            <img src={product.imgUrl} alt={product.name} />
+            <img src={product.imageUrl} alt={product.name} />
           </div>
           <div className={styles.details}>
             <h3>{product.name}</h3>
@@ -44,8 +44,8 @@ export default function ProductModal({
                 <i key={el} className="fa-solid fa-star"></i>
               ))}
             </div>
-            <Link to={`/vendors/${product.vendor.toLowerCase()}`}>
-              {product.vendor}
+            <Link to={`/vendors/${product.vendor._id}`}>
+              {product.vendor.name}
             </Link>
             <p className={styles.prepTime}>Prep Time - 20 mins</p>
           </div>

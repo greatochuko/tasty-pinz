@@ -15,7 +15,7 @@ export default function Cart({ isOpen, setIsOpen }: CartProps) {
         <h2 className={styles.heading}>My Cart</h2>
         <div className={styles.cartItems}>
           {cart.map((cartItem) => (
-            <CartItem key={cartItem.product.name} cartItem={cartItem} />
+            <CartItem key={cartItem.product._id} cartItem={cartItem} />
           ))}
         </div>
       </div>

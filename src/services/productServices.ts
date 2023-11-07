@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001/api/products";
+const BASE_URL = "http://localhost:3000/api/products";
 
 export async function fetchProducts() {
   try {
