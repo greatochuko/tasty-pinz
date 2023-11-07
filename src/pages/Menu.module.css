@@ -2,3 +2,23 @@
   padding: 1rem 12vw;
   flex: 1;
 }
+
+.filterHeader {
+  display: flex;
+  overflow-x: scroll;
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.filterHeader li {
+  padding: 10px 1rem;
+  cursor: pointer;
+}
+
+.highlighter {
+  height: 2px;
+  background-color: var(--GREEN-100);
+  position: absolute;
+  bottom: 0;
+}
