@@ -2,6 +2,7 @@ const BASE_URL = "http://localhost:3000/api/user";
 
 export async function fetchUser() {
   const token = localStorage.getItem("token");
+  if (!token) return { error: "no token" };
   try {
     const res = await fetch(`${BASE_URL}/`, {
       headers: { Authorization: `Bearer ${token}` },
