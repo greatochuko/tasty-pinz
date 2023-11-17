@@ -11,25 +11,25 @@ export default function Hero() {
         <p>that meets your needs</p>
         <div className={styles.categories}>
           <Link
-            to={"/search?category=salad"}
+            to={"/menu?filterBy=salad"}
             className={styles.category + " " + styles.active}
           >
             <img src="/salad.png" alt="salad" />
             <p>Salad</p>
           </Link>
-          <Link to={"/search?category=burger"} className={styles.category}>
+          <Link to={"/menu?filterBy=fast-food"} className={styles.category}>
             <img src="/burger.png" alt="burger" />
             <p>Burger</p>
           </Link>
-          <Link to={"/search?category=cake"} className={styles.category}>
+          <Link to={"/menu?filterBy=cake"} className={styles.category}>
             <img src="/cake.png" alt="cake" />
             <p>Cake</p>
           </Link>
-          <Link to={"/search?category=drinks"} className={styles.category}>
+          <Link to={"/menu?filterBy=drinks"} className={styles.category}>
             <img src="/drinks.png" alt="drinks" />
             <p>Drinks</p>
           </Link>
-          <Link to={"/search?category=pizza"} className={styles.category}>
+          <Link to={"/menu?filterBy=pizza"} className={styles.category}>
             <img src="/pizza.png" alt="pizza" />
             <p>Pizza</p>
           </Link>

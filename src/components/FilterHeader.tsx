@@ -19,6 +19,10 @@ function getHighlighterPos(filterBy: string) {
       return { left: 304, width: 74 };
     case "cake":
       return { left: 378, width: 68 };
+    case "salad":
+      return { left: 444, width: 74 };
+    case "pizza":
+      return { left: 519, width: 70 };
     default:
       return { left: 0, width: 53 };
   }
@@ -41,6 +45,7 @@ export default function FilterHeader({
     if (onClickFunc) {
       onClickFunc(eventTarget.innerText.split(" ").join("-").toLowerCase());
     }
+    console.log(eventTarget.offsetLeft, eventTarget.clientWidth);
 
     setHighlighterPos({
       left: eventTarget.offsetLeft,

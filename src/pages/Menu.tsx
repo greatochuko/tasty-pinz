@@ -41,7 +41,15 @@ export default function Menu() {
     setSearchParams(searchParams);
   }
 
-  const filterList = ["rice", "fast food", "drinks", "steak", "cake"];
+  const filterList = [
+    "rice",
+    "fast food",
+    "drinks",
+    "steak",
+    "cake",
+    "salad",
+    "pizza",
+  ];
 
   return (
     <div className={styles.menu}>
