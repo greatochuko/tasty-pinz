@@ -5,6 +5,7 @@ import Auth from "./pages/Auth";
 import Menu from "./pages/Menu";
 import VendorsPage from "./pages/VendorsPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import VendorDetailPage from "./pages/VendorDetailPage";
 
 const router = createHashRouter([
   {
@@ -13,6 +14,7 @@ const router = createHashRouter([
       { path: "/", element: <Home /> },
       { path: "/menu", element: <Menu /> },
       { path: "/vendors", element: <VendorsPage /> },
+      { path: "/vendor/:vendorName", element: <VendorDetailPage /> },
       { path: "/categories", element: <CategoriesPage /> },
     ],
   },
