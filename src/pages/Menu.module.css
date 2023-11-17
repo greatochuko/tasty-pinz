@@ -14,6 +14,14 @@
 .filterHeader li {
   padding: 10px 1rem;
   cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  white-space: nowrap;
+}
+
+.filterHeader li:hover,
+.filterHeader li.active {
+  color: black;
 }
 
 .highlighter {
@@ -21,4 +29,11 @@
   background-color: var(--GREEN-100);
   position: absolute;
   bottom: 0;
+  transition: 0.3s;
+}
+
+/* MOBILE STYLES */
+
+.menu {
+  padding: 1rem;
 }

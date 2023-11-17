@@ -14,6 +14,7 @@ export type ProductType = {
   name: string;
   price: number;
   imageUrl: string;
+  category: string;
   rating: number;
   vendor: VendorType;
 };
