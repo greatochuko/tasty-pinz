@@ -1,10 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./pages/AppLayout";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Menu from "./pages/Menu";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <AppLayout />,
     children: [

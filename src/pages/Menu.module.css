@@ -1,5 +1,6 @@
 .menu {
-  padding: 1rem 12vw;
+  width: min(95%, 1000px);
+  margin: auto;
   flex: 1;
 }
 
@@ -33,7 +34,8 @@
 }
 
 /* MOBILE STYLES */
-
-.menu {
-  padding: 1rem;
+@media screen and (max-width: 680px) {
+  .menu {
+    padding: 1rem;
+  }
 }

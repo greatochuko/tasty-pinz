@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import styles from "./SearchForm.module.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function SearchForm() {
-  const [query, setQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("query");
+  const [query, setQuery] = useState(searchQuery || "");
+  const navigate = useNavigate();
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    navigate(`/menu?query=${query}`);
   }
 
   return (

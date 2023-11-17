@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchForm from "../components/SearchForm";
 import styles from "./Menu.module.css";
-import { fetchProducts } from "../services/productServices";
+import { searchProducts } from "../services/productServices";
 import ProductGrid from "../components/ProductGrid";
 import { useSearchParams } from "react-router-dom";
 import { ProductType } from "../components/Product";
@@ -50,8 +50,10 @@ function getHighlighterPosition(filterBy: string) {
 export default function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filterBy = searchParams.get("filterBy");
+  const query = searchParams.get("query");
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [highlighterPos, setHighlighterPos] = useState(
     getHighlighterPosition(filterBy as string)
   );
@@ -65,12 +67,19 @@ export default function Menu() {
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
-      const data = await fetchProducts();
+      const data = await searchProducts(query as string);
+      if (data.error) {
+        console.log(data.error);
+
+        setError(data.error);
+        setLoading(false);
+        return;
+      }
       setProducts(data);
       setLoading(false);
     }
     getProducts();
-  }, []);
+  }, [query]);
 
   function handleFilterBy(filter: string) {
     searchParams.set("filterBy", filter);
@@ -78,6 +87,7 @@ export default function Menu() {
     setHighlighterPos(getHighlighterPosition(filter));
   }
 
+  if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading...</h1>;
 
   return (
