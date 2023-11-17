@@ -35,8 +35,6 @@ type ReducerAction = {
 const user = await fetchUser();
 const initialState: CartItemType[] = user.cart || [];
 
-console.log(user.cart);
-
 function cartReducer(
   state: CartItemType[],
   action: ReducerAction

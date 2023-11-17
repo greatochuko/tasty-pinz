@@ -21,7 +21,11 @@ const categories = [
 export default function Categories() {
   return (
     <section className={styles.categories}>
-      <SectionHeading title="Popular Categories" linkText="See More" />
+      <SectionHeading
+        title="Popular Categories"
+        linkText="See More"
+        link="categories"
+      />
       <div className={styles.categoryList}>
         {categories.map((category) => (
           <Link

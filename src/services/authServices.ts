@@ -1,10 +1,10 @@
-const BASE_URL = "http://localhost:3000/api/auth";
+export const BASE_URL = "http://192.168.0.101:3000/api";
 
 export async function fetchLogin(email: string, password: string) {
   let data;
 
   try {
-    const res = await fetch(`${BASE_URL}/login`, {
+    const res = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

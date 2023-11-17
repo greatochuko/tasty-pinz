@@ -1,9 +1,10 @@
-const BASE_URL = "http://localhost:3000/api/user";
+import { BASE_URL } from "./authServices";
 
 export async function fetchUser() {
   const token = localStorage.getItem("token");
+  if (!token) return { error: "no token" };
   try {
-    const res = await fetch(`${BASE_URL}/`, {
+    const res = await fetch(`${BASE_URL}/user/`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();

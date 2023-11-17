@@ -64,7 +64,9 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
 
   return (
     <main className={styles.auth}>
-      <img src="/logo-white.png" alt="logo" className={styles.logo} />
+      <Link to={"/"}>
+        <img src="/logo-white.png" alt="logo" className={styles.logo} />
+      </Link>
 
       <form onSubmit={type === "login" ? login : signup}>
         <div className={styles.heading}>
@@ -153,7 +155,7 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
         ) : null}
         <p className={styles.error}>{error}</p>
         <button
-          disabled={loading || type === "login" ? !canLogin : !canSignup}
+          disabled={loading || (type === "login" ? !canLogin : !canSignup)}
           type="submit"
         >
           {submitBtnText}
