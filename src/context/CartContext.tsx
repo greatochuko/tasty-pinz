@@ -1,14 +1,17 @@
 import { createContext, useReducer } from "react";
 import { ProductType } from "../components/Product";
 import { fetchUser } from "../services/userServices";
-import { fetchAddMealToCart } from "../services/cartServices";
+import {
+  fetchAddMealToCart,
+  fetchRemoveMealFromCart,
+} from "../services/cartServices";
 
 export type CartItemType = { product: ProductType; quantity: number };
 
 export type CartProviderValue = {
   cart: CartItemType[];
   addProductToCart: (product: CartItemType) => void;
-  removeProductFromCart: (product: ProductType) => void;
+  removeProductFromCart: (productId: string) => void;
   increaseProductQuantity: (product: ProductType) => void;
   decreaseProductQuantity: (product: ProductType) => void;
   setCart: (cart: CartItemType[]) => void;
@@ -29,7 +32,7 @@ type ReducerAction = {
     | "DECREASE_QUANTITY"
     | "INCREASE_QUANTITY"
     | "SET";
-  payload?: CartItemType | ProductType | CartItemType[];
+  payload?: CartItemType | ProductType | CartItemType[] | string;
 };
 
 const user = await fetchUser();
@@ -44,7 +47,9 @@ function cartReducer(
       return [...state, action.payload as CartItemType];
 
     case "REMOVE":
-      return state.filter((cartItem) => cartItem.product !== action.payload);
+      return state.filter(
+        (cartItem) => cartItem.product._id !== action.payload
+      );
 
     case "INCREASE_QUANTITY":
       return state.map((cartItem) => ({
@@ -92,8 +97,9 @@ export default function CartProvider({ children }: CartProviderType) {
     dispatch({ type: "ADD", payload: product });
   }
 
-  function removeProductFromCart(product: ProductType) {
-    dispatch({ type: "REMOVE", payload: product });
+  async function removeProductFromCart(productId: string) {
+    await fetchRemoveMealFromCart(productId);
+    dispatch({ type: "REMOVE", payload: productId });
   }
 
   function increaseProductQuantity(product: ProductType) {

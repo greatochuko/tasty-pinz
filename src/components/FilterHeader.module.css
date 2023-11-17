@@ -1,0 +1,29 @@
+.filterHeader {
+  display: flex;
+  overflow-x: scroll;
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.filterHeader li {
+  padding: 10px 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.filterHeader li:hover,
+.filterHeader li.active {
+  color: black;
+}
+
+.highlighter {
+  height: 2px;
+  background-color: var(--GREEN-100);
+  position: absolute;
+  bottom: 0;
+  transition: 0.3s;
+}

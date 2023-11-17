@@ -15,7 +15,7 @@ type VendorProps = {
 export default function Vendor({ vendor, vendorRef }: VendorProps) {
   return (
     <Link
-      to={`/vendors/${vendor.url}`}
+      to={`/vendor/${vendor.url}`}
       key={vendor.name}
       className={styles.vendor}
       ref={vendorRef}

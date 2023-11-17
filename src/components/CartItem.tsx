@@ -18,7 +18,7 @@ export default function CartItem({ cartItem }: CartItemProps) {
     <div className={styles.cartItem}>
       <button
         className={styles.removeItemBtn}
-        onClick={() => removeProductFromCart(cartItem.product)}
+        onClick={() => removeProductFromCart(cartItem.product._id)}
       >
         <i className="fa-solid fa-trash-can"></i>
       </button>
