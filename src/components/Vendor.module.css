@@ -1,0 +1,19 @@
+.vendor {
+  display: flex;
+  border: solid 2px var(--GREEN-100);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vendor img {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  flex: 1;
+  transition: scale 0.2s;
+}
+
+.vendor:hover img {
+  scale: 110%;
+}

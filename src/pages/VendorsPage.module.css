@@ -1,0 +1,13 @@
+.vendorsGrid {
+  width: min(1000px, 90%);
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .vendorsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

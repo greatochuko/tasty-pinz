@@ -91,7 +91,7 @@ export default function Menu() {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <main className={styles.menu}>
+    <div className={styles.menu}>
       <SearchForm />
       <ul className={styles.filterHeader}>
         <li onClick={() => handleFilterBy("all")}>All</li>
@@ -106,6 +106,6 @@ export default function Menu() {
         ></div>
       </ul>
       <ProductGrid products={filteredProducts} />
-    </main>
+    </div>
   );
 }
