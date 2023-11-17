@@ -13,6 +13,7 @@ export default function VendorDetailPage() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [filterBy, setFilterBy] = useState("all");
 
   useEffect(() => {
     async function getProducts() {
@@ -29,10 +30,20 @@ export default function VendorDetailPage() {
     getProducts();
   }, []);
 
-  const filteredProducts = products.filter(
+  function handleSetFilterBy(filter: string) {
+    setFilterBy(filter);
+  }
+
+  let filteredProducts = products.filter(
     (product) =>
       product.vendor.name.toLowerCase() === vendor?.name.toLowerCase()
   );
+
+  if (filterBy !== "all") {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === filterBy
+    );
+  }
 
   const optionList = filteredProducts.map((fp) =>
     fp.category.split("-").join(" ")
@@ -47,8 +58,12 @@ export default function VendorDetailPage() {
         <div className={styles.banner}>
           <img src={vendor.logo} alt="" />
         </div>
-        <FilterHeader optionList={optionList} />
-        <ProductGrid products={filteredProducts} />
+        <FilterHeader optionList={optionList} onClickFunc={handleSetFilterBy} />
+        {products.length ? (
+          <ProductGrid products={filteredProducts} />
+        ) : (
+          <p>Sorry, We are Currently Out Of Stock</p>
+        )}
       </div>
     );
 }
