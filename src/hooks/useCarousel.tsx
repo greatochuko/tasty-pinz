@@ -17,10 +17,7 @@ export default function useCarousel(data: Vendors) {
 
   const maxNumOfVendors = Math.floor(carouselWidth / (vendorWidth + 16));
   function scrollLeft() {
-    console.log(maxNumOfVendors);
-
     if (scrollPosition <= -data.length + maxNumOfVendors) return;
-
     setScrollPosition((curr) => curr - 1);
   }
 

@@ -25,10 +25,6 @@
   outline: none;
 }
 
-.navbar ul li a:focus {
-  border: solid 2px var(--GREEN-100);
-}
-
 .navbar ul :is(li.active, li:hover) a {
   color: #3f7c3f;
   border-bottom: solid 2px #3f7c3f;
