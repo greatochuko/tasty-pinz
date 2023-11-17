@@ -13,21 +13,36 @@ export default function ProductModal({
   closeModal,
   product,
 }: ProductModalProps) {
-  const [quantity, setQuantity] = useState(1);
-  const { addProductToCart } = useCartContext();
+  const {
+    cart,
+    addProductToCart,
+    removeProductFromCart,
+    increaseProductQuantity,
+    decreaseProductQuantity,
+  } = useCartContext();
+  const productInCart = cart.find(
+    (cartItem) => cartItem.product._id === product._id
+  );
+  const [quantity, setQuantity] = useState(productInCart?.quantity || 1);
 
   function increaseQuantity() {
+    increaseProductQuantity(product);
     setQuantity((curr) => curr + 1);
   }
 
   function decreaseQuantity() {
     if (quantity <= 1) return;
+    decreaseProductQuantity(product);
     setQuantity((curr) => curr - 1);
   }
 
   function addToCart() {
     addProductToCart({ product, quantity });
-    closeModal();
+  }
+
+  function removeFromCart() {
+    removeProductFromCart(product._id);
+    setQuantity(1);
   }
 
   return (
@@ -55,10 +70,18 @@ export default function ProductModal({
           <button onClick={decreaseQuantity} disabled={quantity <= 1}>
             -
           </button>
-          <p className={styles.quantity}>{quantity}</p>
+          <p className={styles.quantity}>
+            {productInCart?.quantity || quantity}
+          </p>
           <button onClick={increaseQuantity}>+</button>
-          <button className={styles.addToCartBtn} onClick={addToCart}>
-            <i className="fa-solid fa-cart-shopping"></i>Add To Cart
+          <button
+            className={
+              productInCart ? styles.removeFromCartBtn : styles.addToCartBtn
+            }
+            onClick={productInCart ? removeFromCart : addToCart}
+          >
+            <i className="fa-solid fa-cart-shopping"></i>
+            {productInCart ? "Remove From Cart" : "Add To Cart"}
           </button>
         </div>
       </div>

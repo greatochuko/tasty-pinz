@@ -11,6 +11,6 @@
 }
 
 .productsContainer {
-  width: min(80%, 1400px);
+  width: min(95%, 1000px);
   margin: 3rem auto;
 }

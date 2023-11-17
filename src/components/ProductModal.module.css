@@ -120,6 +120,18 @@ button.addToCartBtn {
   padding: 10px 0;
   height: 100%;
 }
+button.removeFromCartBtn {
+  aspect-ratio: 0;
+  width: 200px;
+  padding: 10px 0;
+  height: 100%;
+  background-color: var(--RED-200);
+  border: solid 1px var(--RED-200);
+}
+
+button.removeFromCartBtn:active {
+  background-color: var(--RED-300);
+}
 
 button.addToCartBtn i {
   margin-right: 10px;
