@@ -1,0 +1,23 @@
+.categoriesPage {
+  width: min(1000px, 90%);
+  margin: 2rem auto;
+}
+
+.categoriesPage h2 {
+  text-align: center;
+  font-family: cursive;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .categoriesPage {
+    grid-template-columns: 1fr 1fr;
+  }
+}
