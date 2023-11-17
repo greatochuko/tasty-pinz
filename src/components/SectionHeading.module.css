@@ -8,14 +8,25 @@
 
 .heading h2 {
   font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .heading a {
   font-weight: 600;
   padding: 5px;
+  white-space: nowrap;
 }
 
 .heading a:hover {
   color: var(--GREEN-100);
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .heading h2 {
+    font-size: 1.1rem;
+  }
+  .heading a {
+    font-size: 1rem;
+  }
 }

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Product.module.css";
 import ProductModal from "./ProductModal";
-import { useCartContext } from "../hooks/useCartContext";
 
 export type VendorType = {
   name: string;
@@ -25,46 +24,31 @@ type ProductProps = {
 
 export default function Product({ product }: ProductProps) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { cart, increaseProductQuantity, decreaseProductQuantity } =
-    useCartContext();
-
-  const productInCart = cart.find(
-    (cartItem) => cartItem.product._id === product._id
-  );
 
   function closeModal() {
     setModalIsOpen(false);
   }
 
+  function handleLikeProduct(e: React.MouseEvent) {
+    e.stopPropagation();
+    return;
+  }
+
   return (
     <>
-      <div className={styles.product}>
-        <img src={product.imageUrl} alt={product.name} />
+      <div className={styles.product} onClick={() => setModalIsOpen(true)}>
+        <div className={styles.imgContainer}>
+          <i className="fa-regular fa-heart" onClick={handleLikeProduct}></i>
+          <img src={product.imageUrl} alt={product.name} />
+        </div>
         <div className={styles.details}>
-          <h3>
+          <h4>
             {product.name}
-            <span>
-              <i className="fa-solid fa-star"></i>
-              {product.rating}
-            </span>
-          </h3>
+            <span>${product.price}</span>
+          </h4>
           <Link to={`/vendors/${product.vendor._id}`}>
             {product.vendor.name}
           </Link>
-          <h3>${product.price}</h3>
-          {productInCart ? (
-            <div className={styles.quantityControl}>
-              <button onClick={() => decreaseProductQuantity(product)}>
-                -
-              </button>
-              <p className={styles.quantity}>{productInCart.quantity}</p>
-              <button onClick={() => increaseProductQuantity(product)}>
-                +
-              </button>
-            </div>
-          ) : (
-            <button onClick={() => setModalIsOpen(true)}>+</button>
-          )}
         </div>
       </div>
       {modalIsOpen && (
