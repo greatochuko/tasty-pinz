@@ -5,6 +5,7 @@ import ProductGrid from "../components/ProductGrid";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../services/productServices";
 import { ProductType } from "../components/Product";
+import FilterHeader from "../components/FilterHeader";
 
 export default function VendorDetailPage() {
   const { vendorName } = useParams();
@@ -33,6 +34,10 @@ export default function VendorDetailPage() {
       product.vendor.name.toLowerCase() === vendor?.name.toLowerCase()
   );
 
+  const optionList = filteredProducts.map((fp) =>
+    fp.category.split("-").join(" ")
+  );
+
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading...</h1>;
 
@@ -42,9 +47,8 @@ export default function VendorDetailPage() {
         <div className={styles.banner}>
           <img src={vendor.logo} alt="" />
         </div>
-        <div className={styles.productsContainer}>
-          <ProductGrid products={filteredProducts} />
-        </div>
+        <FilterHeader optionList={optionList} />
+        <ProductGrid products={filteredProducts} />
       </div>
     );
 }

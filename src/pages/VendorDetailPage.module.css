@@ -1,16 +1,18 @@
+.vendorDetailPage {
+  width: min(95%, 1000px);
+  margin: 2rem auto;
+}
+
 .vendorDetailPage .banner {
   width: 100%;
-  height: 300px;
+  aspect-ratio: 2.5;
   overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
 .vendorDetailPage .banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.productsContainer {
-  width: min(95%, 1000px);
-  margin: 3rem auto;
 }
