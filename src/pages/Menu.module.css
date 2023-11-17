@@ -4,6 +4,10 @@
   flex: 1;
 }
 
+.menu p {
+  text-align: center;
+}
+
 /* MOBILE STYLES */
 @media screen and (max-width: 680px) {
   .menu {

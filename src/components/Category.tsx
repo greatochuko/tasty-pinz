@@ -16,7 +16,7 @@ export default function Category({ category }: CategoryProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <Link to={`/search?category=${url}`} className={styles.category}>
+    <Link to={`/menu?filterBy=${url}`} className={styles.category}>
       <img
         className={loaded ? styles.loaded : ""}
         src={category.imageUrl}

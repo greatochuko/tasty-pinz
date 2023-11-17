@@ -3,7 +3,7 @@ import styles from "./CategoriesPage.module.css";
 
 const categories = [
   { name: "Rice", imageUrl: "/rice.jpg" },
-  { name: "Fast Foods", imageUrl: "/fast-food.jpg" },
+  { name: "Fast Food", imageUrl: "/fast-food.jpg" },
   { name: "Drinks", imageUrl: "/drinks.jpg" },
   { name: "Steak", imageUrl: "/steak.jpg" },
   { name: "Cake", imageUrl: "/cake-category.png" },

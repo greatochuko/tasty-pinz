@@ -15,7 +15,7 @@ export default function Menu() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  let filteredProducts = products.map((a) => a);
+  let filteredProducts = [...products];
   if (filterBy && filterBy != "all")
     filteredProducts = products.filter(
       (product) => product.category === filterBy
@@ -26,8 +26,6 @@ export default function Menu() {
       setLoading(true);
       const data = await searchProducts(query as string);
       if (data.error) {
-        console.log(data.error);
-
         setError(data.error);
         setLoading(false);
         return;
@@ -43,18 +41,21 @@ export default function Menu() {
     setSearchParams(searchParams);
   }
 
-  const optionList = filteredProducts.map((fp) =>
-    fp.category.split("-").join(" ")
-  );
-
-  if (error) return <h1>{error}</h1>;
-  if (loading) return <h1>Loading...</h1>;
+  const filterList = ["rice", "fast food", "drinks", "steak", "cake"];
 
   return (
     <div className={styles.menu}>
       <SearchForm />
-      <FilterHeader optionList={optionList} onClickFunc={handleFilterBy} />
-      <ProductGrid products={filteredProducts} />
+      <FilterHeader optionList={filterList} onClickFunc={handleFilterBy} />
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : filteredProducts.length ? (
+        <ProductGrid products={filteredProducts} />
+      ) : (
+        <p>There are currently no products that match this filter</p>
+      )}
     </div>
   );
 }
