@@ -37,6 +37,7 @@ export default function Navbar() {
               onClick={() => {
                 setNavIsOpen(false);
               }}
+              className={pathname === "/vendors" ? styles.active : ""}
             >
               <Link to={"/vendors"}>Vendors</Link>
             </li>
@@ -44,11 +45,12 @@ export default function Navbar() {
               onClick={() => {
                 setNavIsOpen(false);
               }}
+              className={pathname === "/categories" ? styles.active : ""}
             >
               <Link to={"/categories"}>Categories</Link>
             </li>
             {user ? (
-              <li>
+              <li className={pathname === "/order" ? styles.active : ""}>
                 <Link to={"/order"}>Orders</Link>
               </li>
             ) : null}

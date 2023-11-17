@@ -7,7 +7,7 @@ export default function Footer() {
       <img className={styles.logo} src="logo.png" alt="" />
       <div className={styles.socialLinks}>
         <a
-          href="http://linkedin.com/in/greatochuko123"
+          href="http://linkedin.com/in/greatochuko"
           target="_blank"
           rel="noopener noreferrer"
         >

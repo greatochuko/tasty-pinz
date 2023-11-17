@@ -63,7 +63,7 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
   if (user) return <Navigate to={"/"} />;
 
   return (
-    <main className={styles.auth}>
+    <div className={styles.auth}>
       <Link to={"/"}>
         <img src="/logo-white.png" alt="logo" className={styles.logo} />
       </Link>
@@ -161,6 +161,6 @@ export default function Auth({ type }: { type: "login" | "signup" }) {
           {submitBtnText}
         </button>
       </form>
-    </main>
+    </div>
   );
 }

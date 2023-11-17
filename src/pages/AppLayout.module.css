@@ -4,3 +4,7 @@
   min-height: 100dvh;
   overflow-y: scroll;
 }
+
+.outlet {
+  flex: 1;
+}
