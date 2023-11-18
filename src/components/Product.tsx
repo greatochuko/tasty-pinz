@@ -46,7 +46,12 @@ export default function Product({ product }: ProductProps) {
             {product.name}
             <span>${product.price}</span>
           </h4>
-          <Link to={`/vendors/${product.vendor._id}`}>
+          <Link
+            to={`/vendor/${product.vendor.name
+              .split(" ")
+              .join("-")
+              .toLowerCase()}`}
+          >
             {product.vendor.name}
           </Link>
         </div>

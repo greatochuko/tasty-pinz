@@ -1,11 +1,12 @@
 .vendorDetailPage {
   width: min(95%, 1000px);
-  margin: 2rem auto;
+  margin: 2vh auto;
 }
 
 .vendorDetailPage .banner {
   width: 100%;
   aspect-ratio: 2.5;
+  min-height: 200px;
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 2rem;

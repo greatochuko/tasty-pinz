@@ -59,7 +59,12 @@ export default function ProductModal({
                 <i key={el} className="fa-solid fa-star"></i>
               ))}
             </div>
-            <Link to={`/vendors/${product.vendor._id}`}>
+            <Link
+              to={`/vendor/${product.vendor.name
+                .split(" ")
+                .join("-")
+                .toLowerCase()}`}
+            >
               {product.vendor.name}
             </Link>
           </div>
