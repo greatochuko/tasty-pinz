@@ -1,0 +1,116 @@
+.ordersPage {
+  width: min(90%, 1000px);
+  margin: 3vh auto;
+  color: #222;
+}
+
+.ordersPage h1 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.ordersPage h1 span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+nav.ordersNav {
+  overflow-x: scroll;
+  margin-bottom: 1rem;
+}
+
+nav.ordersNav ul {
+  display: flex;
+  gap: 1rem;
+}
+
+nav.ordersNav ul li {
+  padding: 2px 2px;
+  cursor: pointer;
+  font-weight: 600;
+  border-bottom: solid 2px transparent;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+nav.ordersNav ul li:hover {
+  color: var(--GREEN-100);
+}
+
+nav.ordersNav ul li.active {
+  color: var(--GREEN-100);
+  border-bottom-color: var(--GREEN-100);
+}
+
+.ordersTable {
+  overflow-x: scroll;
+}
+
+.ordersTable ul {
+  min-width: fit-content;
+}
+
+.ordersTable .tableHead {
+  grid-template-columns: 40px 100px 1fr repeat(3, 150px);
+  display: grid;
+  border-bottom: solid 1px #ccc;
+  padding: 1rem;
+  gap: 10px;
+  width: 100%;
+  width: 100%;
+}
+
+.ordersTable .row {
+  width: 100%;
+}
+
+.ordersTable .row a {
+  padding: 10px;
+  grid-template-columns: 40px 100px 1fr repeat(3, 150px);
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.ordersTable .row a:hover {
+  background-color: #eee;
+}
+
+.ordersTable .row:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.ordersTable .row span {
+  white-space: nowrap;
+}
+
+.ordersTable .tableHead span {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.ordersTable .row .completed {
+  background-color: rgba(0, 165, 0, 0.1);
+  color: green;
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.ordersTable .row .pending {
+  background-color: rgba(255, 255, 0, 0.2);
+  color: orange;
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.ordersTable .row .canceled {
+  background-color: rgba(255, 0, 0, 0.05);
+  color: red;
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 999px;
+}

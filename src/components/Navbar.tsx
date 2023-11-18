@@ -51,7 +51,7 @@ export default function Navbar() {
             </li>
             {user ? (
               <li className={pathname === "/order" ? styles.active : ""}>
-                <Link to={"/order"}>Orders</Link>
+                <Link to={"/orders"}>Orders</Link>
               </li>
             ) : null}
           </ul>
