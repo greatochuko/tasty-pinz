@@ -38,6 +38,9 @@ export default function CartItem({ cartItem }: CartItemProps) {
           <button onClick={() => increaseProductQuantity(cartItem.product)}>
             +
           </button>
+          <p className={styles.totalPrice}>
+            ${(cartItem.product.price * cartItem.quantity).toFixed(2)}
+          </p>
         </div>
       </div>
     </div>

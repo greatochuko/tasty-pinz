@@ -1,14 +1,18 @@
 .cart {
   z-index: 100;
-  background-color: #f5f5f5;
+  background-color: white;
   position: fixed;
   right: -100%;
   top: 0;
   width: max(30vw, 500px);
   height: 100vh;
-  transition: 0.3s;
+  transition-duration: 0.3s;
+  transition-property: right bottom;
   padding: 1rem;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .cart.open {
@@ -34,7 +38,7 @@
 }
 
 .heading {
-  border-bottom: solid 1px #333;
+  border-bottom: solid 1px #ccc;
   color: #333;
   padding: 5px 0;
 }
@@ -43,7 +47,55 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 1rem 0;
+  overflow-y: scroll;
+}
+
+.cart form {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cart form input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: solid 1px #ddd;
+  font-size: 1rem;
+}
+
+.cart form button {
+  font-size: 1rem;
+  padding: 8px 1rem;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+}
+
+.cart form button:hover {
+  background-color: #ddd;
+  border-color: #ccc;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.total :nth-child(2) {
+  color: var(--GREEN-100);
+}
+
+.checkoutBtn {
+  padding: 10px;
+  border: solid 1px var(--GREEN-100);
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: var(--GREEN-100);
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
