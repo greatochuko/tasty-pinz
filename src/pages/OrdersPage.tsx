@@ -4,35 +4,35 @@ import { Link } from "react-router-dom";
 
 const orders = [
   {
-    _id: "#12345671",
+    _id: "12345671",
     address: "351, Downtown, AU",
     date: "23/12/2022",
     totalPrice: 120.99,
     status: "completed",
   },
   {
-    _id: "#12345672",
+    _id: "12345672",
     address: "351, Downtown, AU",
     date: "23/12/2022",
     totalPrice: 12.99,
     status: "pending",
   },
   {
-    _id: "#12345673",
+    _id: "12345673",
     address: "351, Downtown, AU",
     date: "23/12/2022",
     totalPrice: 475.99,
     status: "canceled",
   },
   {
-    _id: "#12345674",
+    _id: "12345674",
     address: "351, Downtown, AU",
     date: "23/12/2022",
     totalPrice: 499.99,
     status: "completed",
   },
   {
-    _id: "#12345675",
+    _id: "12345675",
     address: "351, Downtown, AU",
     date: "23/12/2022",
     totalPrice: 4320.99,
@@ -94,9 +94,9 @@ export default function OrdersPage() {
           </li>
           {filteredOrders.map((order, i) => (
             <li key={order._id} className={styles.row}>
-              <Link to={`/order/12345678`}>
+              <Link to={`/order/${order._id}`}>
                 <span>{i + 1}</span>
-                <span>{order._id}</span>
+                <span>#{order._id}</span>
                 <span>{order.address}</span>
                 <span>{order.date}</span>
                 <span>${order.totalPrice}</span>

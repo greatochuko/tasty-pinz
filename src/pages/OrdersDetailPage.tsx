@@ -1,14 +1,68 @@
 import { useState } from "react";
 import styles from "./OrdersPage.module.css";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+const products = [
+  {
+    _id: "#12345671",
+    name: "Big Mac Chicken Burger",
+    imgUrl: "/chicken-burger.jpg",
+    quantity: 3,
+    price: 128,
+    status: "completed",
+  },
+  {
+    _id: "#12345672",
+    name: "Big Mac Chicken Burger",
+    imgUrl: "/chicken-burger.jpg",
+    quantity: 3,
+    price: 128,
+    status: "pending",
+  },
+  {
+    _id: "#12345673",
+    name: "Big Mac Chicken Burger",
+    imgUrl: "/chicken-burger.jpg",
+    quantity: 3,
+    price: 128,
+    status: "canceled",
+  },
+  {
+    _id: "#12345674",
+    name: "Big Mac Chicken Burger",
+    imgUrl: "/chicken-burger.jpg",
+    quantity: 3,
+    price: 128,
+    status: "completed",
+  },
+  {
+    _id: "#12345675",
+    name: "Big Mac Chicken Burger",
+    imgUrl: "/chicken-burger.jpg",
+    quantity: 3,
+    price: 128,
+    status: "pending",
+  },
+];
 
 export default function OrderDetailPage() {
   const [active, setActive] = useState("all");
   const { orderId } = useParams();
+  const navigate = useNavigate();
+
+  let filteredProducts = [...products];
+
+  if (active !== "all") {
+    filteredProducts = products.filter((product) => product.status === active);
+  }
 
   return (
     <div className={styles.ordersPage}>
-      <h1>Order {orderId}</h1>
+      <button className={styles.backBtn} onClick={() => navigate(-1)}>
+        <i className="fa-solid fa-caret-left"></i>
+        <p>Back</p>
+      </button>
+      <h1>Order #{orderId}</h1>
       <nav className={styles.ordersNav}>
         <ul>
           <li
@@ -41,36 +95,27 @@ export default function OrderDetailPage() {
         <ul>
           <li className={styles.tableHead}>
             <span>#</span>
-            <span>Order ID</span>
+            <span>Product ID</span>
             <span>Product Name</span>
-            <span>Date</span>
+            <span>Quantity</span>
             <span>Total Price</span>
             <span>Status</span>
           </li>
-          <li className={styles.row}>
-            <span>1</span>
-            <span>#12345678</span>
-            <span>Lorem ipsum dolor...</span>
-            <span>20/03/2023</span>
-            <span>$399.99</span>
-            <span>Complete</span>
-          </li>
-          <li className={styles.row}>
-            <span>1</span>
-            <span>#12345678</span>
-            <span>Lorem ipsum dolor...</span>
-            <span>20/03/2023</span>
-            <span>$399.99</span>
-            <span>Complete</span>
-          </li>
-          <li className={styles.row}>
-            <span>1</span>
-            <span>#12345678</span>
-            <span>Lorem ipsum dolor...</span>
-            <span>20/03/2023</span>
-            <span>$399.99</span>
-            <span>Complete</span>
-          </li>
+          {filteredProducts.map((product, i) => (
+            <li key={product._id} className={styles.row}>
+              <Link to={""}>
+                <span>{i + 1}</span>
+                <span>{product._id}</span>
+                <span>
+                  <img src={product.imgUrl} alt="" />
+                  {product.name}
+                </span>
+                <span>{product.quantity}</span>
+                <span>${(product.price * product.quantity).toFixed(2)}</span>
+                <span className={styles[product.status]}>{product.status}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

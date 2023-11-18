@@ -4,6 +4,20 @@
   color: #222;
 }
 
+.ordersPage .backBtn {
+  background-color: transparent;
+  border: none;
+  margin: 1rem 0;
+  font-size: 1rem;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.ordersPage .backBtn p:hover {
+  text-decoration: underline;
+}
+
 .ordersPage h1 {
   font-size: 1.6rem;
   margin-bottom: 2rem;
@@ -57,7 +71,6 @@ nav.ordersNav ul li.active {
   padding: 1rem;
   gap: 10px;
   width: 100%;
-  width: 100%;
 }
 
 .ordersTable .row {
@@ -84,6 +97,15 @@ nav.ordersNav ul li.active {
 
 .ordersTable .row span {
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ordersTable .row span img {
+  width: 45px;
+  aspect-ratio: 1.1;
+  border-radius: 5px;
 }
 
 .ordersTable .tableHead span {
