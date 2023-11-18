@@ -133,12 +133,21 @@ button.removeFromCartBtn:active {
   background-color: var(--RED-300);
 }
 
-button.addToCartBtn i {
+button.addToCartBtn i,
+button.removeFromCartBtn i {
   margin-right: 10px;
 }
 
 @keyframes show {
   100% {
     scale: 1;
+  }
+}
+
+/* MOBILE STYLES */
+
+@media screen and (max-width: 600px) {
+  .productModal {
+    padding: 2rem 1rem;
   }
 }

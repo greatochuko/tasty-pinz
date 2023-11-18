@@ -62,7 +62,6 @@ export default function ProductModal({
             <Link to={`/vendors/${product.vendor._id}`}>
               {product.vendor.name}
             </Link>
-            <p className={styles.prepTime}>Prep Time - 20 mins</p>
           </div>
           <p className={styles.price}>${product.price}</p>
         </div>
