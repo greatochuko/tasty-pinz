@@ -4,7 +4,10 @@ import { fetchUser } from "../services/userServices";
 import {
   fetchAddMealToCart,
   fetchRemoveMealFromCart,
+  fetchdecreaseCartItemQuantity,
+  fetchincreaseCartItemQuantity,
 } from "../services/cartServices";
+import toast from "react-hot-toast";
 
 export type CartItemType = { product: ProductType; quantity: number };
 
@@ -12,8 +15,8 @@ export type CartProviderValue = {
   cart: CartItemType[];
   addProductToCart: (product: CartItemType) => void;
   removeProductFromCart: (productId: string) => void;
-  increaseProductQuantity: (product: ProductType) => void;
-  decreaseProductQuantity: (product: ProductType) => void;
+  increaseProductQuantity: (productId: string) => void;
+  decreaseProductQuantity: (productId: string) => void;
   setCart: (cart: CartItemType[]) => void;
   clearCart: () => void;
 };
@@ -55,24 +58,16 @@ function cartReducer(
       return state.map((cartItem) => ({
         ...cartItem,
         quantity:
-          cartItem.product === action.payload
+          cartItem.product._id === action.payload
             ? (cartItem.quantity += 1)
             : cartItem.quantity,
       }));
 
     case "DECREASE_QUANTITY": {
-      const productToUpdate = state.find(
-        (cartItem) => cartItem.product === action.payload
-      );
-
-      if ((productToUpdate?.quantity as number) <= 1) {
-        return state.filter((cartItem) => cartItem.product !== action.payload);
-      }
-
       return state.map((cartItem) => ({
         ...cartItem,
         quantity:
-          cartItem.product === action.payload && cartItem.quantity > 1
+          cartItem.product._id === action.payload
             ? (cartItem.quantity -= 1)
             : cartItem.quantity,
       }));
@@ -93,21 +88,43 @@ export default function CartProvider({ children }: CartProviderType) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   async function addProductToCart(product: CartItemType) {
-    await fetchAddMealToCart(product);
+    const data = await fetchAddMealToCart(product);
+    if (data.error) {
+      toast.error("Something went wrong");
+      return;
+    }
     dispatch({ type: "ADD", payload: product });
   }
 
   async function removeProductFromCart(productId: string) {
-    await fetchRemoveMealFromCart(productId);
+    const data = await fetchRemoveMealFromCart(productId);
+    if (data.error) {
+      toast.error("Something went wrong");
+      return;
+    }
     dispatch({ type: "REMOVE", payload: productId });
   }
 
-  function increaseProductQuantity(product: ProductType) {
-    dispatch({ type: "INCREASE_QUANTITY", payload: product });
+  async function increaseProductQuantity(productId: string) {
+    const data = await fetchincreaseCartItemQuantity(productId);
+    if (data.error) {
+      toast.error("Something went wrong");
+      return;
+    }
+    dispatch({ type: "INCREASE_QUANTITY", payload: productId });
   }
 
-  function decreaseProductQuantity(product: ProductType) {
-    dispatch({ type: "DECREASE_QUANTITY", payload: product });
+  async function decreaseProductQuantity(productId: string) {
+    const currQuantity = state.find(
+      (cartItem) => cartItem.product._id === productId
+    );
+    if ((currQuantity?.quantity as number) <= 1) return;
+    const data = await fetchdecreaseCartItemQuantity(productId);
+    if (data.error) {
+      toast.error("Something went wrong");
+      return;
+    }
+    dispatch({ type: "DECREASE_QUANTITY", payload: productId });
   }
 
   function clearCart() {

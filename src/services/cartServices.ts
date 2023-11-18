@@ -40,3 +40,36 @@ export async function fetchRemoveMealFromCart(productId: string) {
     return { error: err.message };
   }
 }
+
+export async function fetchincreaseCartItemQuantity(productId: string) {
+  const token = localStorage.getItem("token");
+  try {
+    const res = await fetch(`${BASE_URL}/cart/increase/${productId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    const err = e as Error;
+    return { error: err.message };
+  }
+}
+export async function fetchdecreaseCartItemQuantity(productId: string) {
+  const token = localStorage.getItem("token");
+  try {
+    const res = await fetch(`${BASE_URL}/cart/decrease/${productId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    const err = e as Error;
+    return { error: err.message };
+  }
+}

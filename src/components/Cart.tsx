@@ -40,10 +40,9 @@ export default function Cart({ isOpen, setIsOpen }: CartProps) {
           <p>Total</p>
           <p>
             $
-            {cart.reduce(
-              (curr, acc) => acc.product.price * acc.quantity + curr,
-              0
-            )}
+            {cart
+              .reduce((curr, acc) => acc.product.price * acc.quantity + curr, 0)
+              .toFixed(2)}
           </p>
         </div>
         <Link to={"/checkout"} className={styles.checkoutBtn}>

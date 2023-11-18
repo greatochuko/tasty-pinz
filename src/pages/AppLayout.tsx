@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import styles from "./AppLayout.module.css";
 import Navbar from "../components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 export default function AppLayout() {
   return (
@@ -14,6 +15,7 @@ export default function AppLayout() {
       <CartButton />
 
       <Footer />
+      <Toaster />
     </div>
   );
 }

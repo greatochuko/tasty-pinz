@@ -31,11 +31,11 @@ export default function CartItem({ cartItem }: CartItemProps) {
           {cartItem.product.vendor.name}
         </Link>
         <div className={styles.quantityControl}>
-          <button onClick={() => decreaseProductQuantity(cartItem.product)}>
+          <button onClick={() => decreaseProductQuantity(cartItem.product._id)}>
             -
           </button>
           <p className={styles.quantity}>{cartItem.quantity}</p>
-          <button onClick={() => increaseProductQuantity(cartItem.product)}>
+          <button onClick={() => increaseProductQuantity(cartItem.product._id)}>
             +
           </button>
           <p className={styles.totalPrice}>
