@@ -60,15 +60,22 @@
   flex: 1;
   padding: 8px;
   border-radius: 5px;
-  border: solid 1px #ddd;
+  border: solid 1px #ccc;
   font-size: 1rem;
+  outline: none;
 }
 
 .cart form button {
   font-size: 1rem;
   padding: 8px 1rem;
-  border: solid 1px #ddd;
+  border: solid 1px #ccc;
   border-radius: 5px;
+  transition: 0.2s;
+  outline: none;
+}
+
+.cart form button:focus {
+  border-color: var(--GREEN-100);
 }
 
 .cart form button:hover {

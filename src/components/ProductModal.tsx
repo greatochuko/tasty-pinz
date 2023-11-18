@@ -26,13 +26,13 @@ export default function ProductModal({
   const [quantity, setQuantity] = useState(productInCart?.quantity || 1);
 
   function increaseQuantity() {
-    increaseProductQuantity(product);
+    increaseProductQuantity(product._id);
     setQuantity((curr) => curr + 1);
   }
 
   function decreaseQuantity() {
     if (quantity <= 1) return;
-    decreaseProductQuantity(product);
+    decreaseProductQuantity(product._id);
     setQuantity((curr) => curr - 1);
   }
 

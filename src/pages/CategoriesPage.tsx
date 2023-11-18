@@ -7,6 +7,8 @@ const categories = [
   { name: "Drinks", imageUrl: "/drinks.jpg" },
   { name: "Steak", imageUrl: "/steak.jpg" },
   { name: "Cake", imageUrl: "/cake-category.png" },
+  { name: "Salad", imageUrl: "/salad.jpg" },
+  { name: "Pizza", imageUrl: "/pizza.jpg" },
 ];
 
 export default function CategoriesPage() {

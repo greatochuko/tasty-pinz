@@ -11,7 +11,7 @@
   overflow: hidden;
   border-radius: 10px;
   display: flex;
-  aspect-ratio: 1.3;
+  aspect-ratio: 1.5;
   width: 100%;
 }
 
@@ -54,8 +54,21 @@
   padding: 0 1px;
 }
 
-.product a {
+.product .details > div {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.product .details > div span {
+  color: #555;
+  font-size: 0.7rem;
+}
+
+.product .details a {
   font-size: 0.9rem;
+  padding: 5px 0 5px 0;
 }
 
 .product a:hover {

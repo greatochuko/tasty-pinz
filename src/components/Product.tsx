@@ -46,14 +46,20 @@ export default function Product({ product }: ProductProps) {
             {product.name}
             <span>${product.price}</span>
           </h4>
-          <Link
-            to={`/vendor/${product.vendor.name
-              .split(" ")
-              .join("-")
-              .toLowerCase()}`}
-          >
-            {product.vendor.name}
-          </Link>
+          <div>
+            <Link
+              to={`/vendor/${product.vendor.name
+                .split(" ")
+                .join("-")
+                .toLowerCase()}`}
+            >
+              {product.vendor.name}
+            </Link>
+            <span>&#8226;</span>
+            <Link to={`/menu?filterBy=${product.category}`}>
+              {product.category.split("-").join("  ")}
+            </Link>
+          </div>
         </div>
       </div>
       {modalIsOpen && (
