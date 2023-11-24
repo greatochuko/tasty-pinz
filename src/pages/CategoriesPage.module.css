@@ -20,4 +20,8 @@
   .categoriesPage {
     grid-template-columns: 1fr 1fr;
   }
+
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }

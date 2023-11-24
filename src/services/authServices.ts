@@ -1,4 +1,5 @@
-export const BASE_URL = "http://192.168.0.101:3000/api";
+// export const BASE_URL = "http://192.168.0.101:3000/api";
+export const BASE_URL = "http://localhost:3000/api";
 
 export async function fetchLogin(email: string, password: string) {
   let data;
