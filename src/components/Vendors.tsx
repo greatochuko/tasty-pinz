@@ -4,8 +4,17 @@ import Vendor from "./Vendor";
 import vendors from "../../data/vendors.json";
 
 export default function Vendors() {
-  const { carouselRef, scrollLeft, scrollPosition, scrollRight, childRef } =
-    useCarousel(vendors);
+  const {
+    carouselRef,
+    scrollLeft,
+    scrollPosition,
+    scrollRight,
+    childRef,
+    vendorWidth,
+  } = useCarousel(vendors);
+  console.clear();
+  console.log(childRef.current?.clientWidth);
+  console.log(carouselRef.current?.clientWidth);
 
   return (
     <section className={styles.vendorSection}>
@@ -14,7 +23,7 @@ export default function Vendors() {
         <div
           className={styles.vendorList}
           style={{
-            transform: `translateX(${scrollPosition * 216}px)`,
+            transform: `translateX(${scrollPosition * vendorWidth}px)`,
           }}
         >
           <Vendor
