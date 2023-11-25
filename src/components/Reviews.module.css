@@ -2,7 +2,7 @@
   background-image: url("/reviews-section-bg.jpg");
   background-size: cover;
   background-position: center;
-  height: 60dvh;
+  height: min(50vw, 400px);
   margin: 3rem 0;
   position: relative;
 }
