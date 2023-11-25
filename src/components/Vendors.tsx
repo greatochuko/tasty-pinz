@@ -12,9 +12,6 @@ export default function Vendors() {
     childRef,
     vendorWidth,
   } = useCarousel(vendors);
-  console.clear();
-  console.log(childRef.current?.clientWidth);
-  console.log(carouselRef.current?.clientWidth);
 
   return (
     <section className={styles.vendorSection}>

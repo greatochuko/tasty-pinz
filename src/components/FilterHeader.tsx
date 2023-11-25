@@ -45,7 +45,6 @@ export default function FilterHeader({
     if (onClickFunc) {
       onClickFunc(eventTarget.innerText.split(" ").join("-").toLowerCase());
     }
-    console.log(eventTarget.offsetLeft, eventTarget.clientWidth);
 
     setHighlighterPos({
       left: eventTarget.offsetLeft,

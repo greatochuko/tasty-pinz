@@ -15,8 +15,14 @@ const specialDishes = [
 ];
 
 export default function SpecialDishes() {
-  const { carouselRef, scrollLeft, scrollPosition, scrollRight, childRef } =
-    useCarousel(specialDishes);
+  const {
+    carouselRef,
+    scrollLeft,
+    scrollPosition,
+    scrollRight,
+    childRef,
+    vendorWidth,
+  } = useCarousel(specialDishes);
 
   return (
     <section className={styles.specialDishes}>
@@ -32,7 +38,7 @@ export default function SpecialDishes() {
           <div
             className={styles.specialDishList}
             style={{
-              transform: `translateX(${scrollPosition * 252}px)`,
+              transform: `translateX(${scrollPosition * (vendorWidth + 16)}px)`,
             }}
           >
             <a
