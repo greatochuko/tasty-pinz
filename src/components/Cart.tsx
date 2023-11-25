@@ -21,7 +21,12 @@ export default function Cart({ isOpen, setIsOpen }: CartProps) {
   return (
     <>
       <div className={[styles.cart, isOpen ? styles.open : ""].join(" ")}>
-        <h2 className={styles.heading}>My Cart</h2>
+        <div className={styles.heading}>
+          <h2>My Cart</h2>{" "}
+          <button onClick={() => setIsOpen(false)}>
+            <i className="fa-solid fa-circle-xmark"></i>
+          </button>
+        </div>
         <div className={styles.cartItems}>
           {cart.map((cartItem) => (
             <CartItem key={cartItem.product._id} cartItem={cartItem} />

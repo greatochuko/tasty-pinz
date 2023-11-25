@@ -38,9 +38,29 @@
 }
 
 .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: solid 1px #ccc;
-  color: #333;
   padding: 5px 0;
+  color: #333;
+}
+
+.heading button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.3rem;
+  color: #333;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.heading button:hover {
+  color: var(--RED-200);
+}
+
+.heading button:active {
+  scale: 0.9;
 }
 
 .cartItems {
